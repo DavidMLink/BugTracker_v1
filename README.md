@@ -11,3 +11,9 @@
 - Manually Cascaded Deletion
 - Basic Error Handling
 - Database Seeder
+
+### Future Fixes? 🛠
+- Using Change Streams to organize Backend / better cascading for updates
+- Adding Comments
+- Bundling Software
+- General Organization of Code (Using Sass, etc)
