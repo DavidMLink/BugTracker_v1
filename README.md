@@ -7,7 +7,7 @@
 ### Features
 - Login & Registration
 - Cascading Permissions
-- Manually Cascaded Edit
+- Manually Cascaded Editing
 - Manually Cascaded Deletion
 - Basic Error Handling
 - Database Seeder
