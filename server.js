@@ -68,7 +68,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Set Session Options
 app.use(session({
-  secret: 'NyanCat',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
 }))
