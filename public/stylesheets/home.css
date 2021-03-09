@@ -1,0 +1,23 @@
+.headerHome{
+    display: flex;
+    justify-content: center;
+    background-color: #182C25;
+    width: 100%;
+}
+
+.headerHome h1{
+    /* padding-left: 30px; */
+    font-size: 96px;
+    color: white;
+    letter-spacing: -10px;
+}
+
+.headerHome img{
+    /* position: absolute; */
+    /* left: 1000px; */
+    /* padding-right: 20px; */
+}
+
+body{
+    background: #d7f5d6;
+}

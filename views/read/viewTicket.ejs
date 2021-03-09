@@ -1,0 +1,43 @@
+<style>
+    .view-data{
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<div class="view-data">
+    <div class="viewStuff">
+        <h1>VIEW TICKET</h1>
+        <br>
+        <br>
+        <p>Title: <%= data.title %> </p>
+        <br>
+        <p>owner: <%= data.owner.name %></p>
+        <br>
+        <p>Project: <%= data.project.title %></p>
+        <br>
+        <p>Assigned To Users:</p>
+        <% data.assignedTo.forEach(element => { %>
+        <p>&emsp;&emsp;<%= element.name %></p>
+        <% }) %>
+        <p>Status: <%= data.status %></p>
+        <br>
+        <p>Priority: <%= data.priority %></p>
+        <br>
+        <p>Type: <%= data.type %></p>
+        <br>
+        <p>Sourcing: <%= data.sourcing %></p>
+        <br>
+        <br>
+    </div>
+
+    <div class="comments">
+        <h3 class="error">Under Construction:</h3>
+        <h1>COMMENTS:</h1>
+        <textarea style="background-color: bisque;" name="" id="" cols="30" rows="10"></textarea>
+    </div>
+    <!-- <h1>EDIT TICKET</h1>
+<br>
+<br>
+<a href="/dashboard/edit-ticket/<%= data.id %>" title="inner" class="inner-link">Edit?</a> -->
+</div>

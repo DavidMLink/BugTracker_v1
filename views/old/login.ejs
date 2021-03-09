@@ -1,0 +1,24 @@
+<h1>Login</h1>
+<br>
+<br>
+<br>
+<% if (message) { %>
+    <h2 class="error"><%= message %></h2>
+<% } %>
+
+<br>
+<br>
+<br>
+<form action="/login" method="POST">
+    <br>
+    <br>
+    <label for="re">Email:</label>
+    <input type="text" name="email" id="re">
+    <br>
+    <br>
+    <label for="ree">Password:</label>
+    <input type="text" name="password" id="ree">
+    <br>
+    <br>
+    <input type="submit" value="Sign Up">
+</form>

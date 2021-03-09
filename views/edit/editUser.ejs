@@ -1,0 +1,65 @@
+<div class="forms-sidebyside">
+    <div class="form-edit">
+        <h1>EDIT USER</h1>
+
+        <form id="form" action="/dashboard/users/<%= selectedUser.id %>" method="POST"
+            enctype="application/x-www-form-urlencoded">
+            <br>
+            <br>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="<%= selectedUser.name %>">
+            <br>
+            <br>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" value="<%= selectedUser.email %>">
+            <br>
+            <br>
+            <label for="role">Role:</label>
+            <select name="role" id="role" value=''>
+                <% if (selectedUser.role == 'project manager') { %>
+                <option value="project manager" selected="selected">Project Manager</option>
+                <option value="developer">Developer</option>
+                <% } %>
+                <% if (selectedUser.role == 'developer') { %>
+                <option value="project manager">Project Manager</option>
+                <option value="developer" selected="selected">Developer</option>
+                <% } %>
+            </select>
+            <br>
+            <br>
+            <label for="manager_id">Assigned Manager:</label>
+            <br>
+            <% users.forEach(user => { %>
+            <% if (user.id != selectedUser.id) { %>
+
+            <% if ((user.role == 'project manager')) { %>
+            <% if (user.subordinates.includes(selectedUser.id)) { %>
+            <!-- Pre-Check the Box -->
+            <input type="checkbox" name="manager_id" id="manager_id" value="<%= user.id %>" checked> <%= user.name %>
+            <br>
+            <% } else { %>
+            <!-- Don't Check the Box -->
+            <input type="checkbox" name="manager_id" id="manager_id" value="<%= user.id %>"> <%= user.name %> <br>
+            <% }}}}) %>
+            <br>
+            <br>
+            <input type="hidden" name="_method" value="PUT">
+            <input type="submit" value="Edit User">
+        </form>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="form-delete">
+        <h1>DELETE</h1>
+        <br>
+        <form action="/dashboard/users/<%= selectedUser.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete User">
+        </form>
+    </div>
+</div>

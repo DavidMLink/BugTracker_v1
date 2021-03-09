@@ -1,0 +1,95 @@
+<style>
+    .svgs img {
+        position: absolute;
+        width: 40px;
+        z-index: 1;
+    }
+
+    .colorbackground {
+        /* background-color: chartreuse; */
+        background-color: #d7f5d6;
+    }
+
+    .form-modal {
+        z-index: 2;
+    }
+
+    /* input[type="radio"]{
+        border-radius: 2px;
+    } */
+
+    label {
+        color: white;
+    }
+</style>
+
+<div class="colorbackground"
+    style="position: absolute; z-index: 2; height: 100vh; opacity: 0.8; width: 100%; left: 0; right: 0; top: 0; bottom: 0px;">
+</div>
+
+
+
+<div class="svgs">
+    <img src="../images/svgs/bed, bug.svg" style="left: 2%; top: 43%; transform: rotate(20deg);">
+    <img src="../images/svgs/bee, honey.svg" style="right: 9%; top: 22%; transform: rotate(75deg);">
+    <img src="../images/svgs/beetle, bug, garden.svg" style="top: 15%; left: 21%; transform: rotate(-40deg);">
+    <img src="../images/svgs/bug, bed, green.svg" style="bottom: 9%; left: 25%; transform: rotate(280deg);">
+    <img src="../images/svgs/bug, bite, virus.svg" style="right: 42%; bottom: 4%; transform: rotate(-20deg);">
+    <img src="../images/svgs/bug, blue.svg" style="right: 2%; bottom: 4%; transform: rotate(210deg);">
+    <!-- <img src="../images/svgs/cockroach, bug, virus.svg"  style="top: 74%; right: 10%; transform: rotate(-40deg);"> -->
+    <img src="../images/svgs/fly.svg" style="right: 19.3%; top: 43%; transform: rotate(-120deg);">
+    <img src="../images/svgs/mosquito.svg" style="right: 21%; top: 64%; transform: rotate(180deg);">
+    <img src="../images/svgs/spider.svg" style="left: 23.5%; top: 48%; transform: rotate(20deg);">
+</div>
+
+<div class="form-modal">
+
+    <div class="form-toggle">
+        <button id="login-toggle" onclick="toggleLogin()">log in</button>
+        <button id="signup-toggle" onclick="toggleSignup()">sign up</button>
+    </div>
+
+    <div id="login-form">
+        <form action="/login" method="POST">
+            <input type="text" name="email" placeholder="Enter email or username" />
+            <input type="password" name="password" placeholder="Enter password" />
+            <input type="submit" value="Login" class="btn login" />
+            <!-- <button type="button" class="btn login">login</button> -->
+            <p><a href="javascript:void(0)">Forgot password</a> </p>
+            <p><a href="javascript:void(0)" onclick="toggleSignup()">Register Account</a></p>
+        </form>
+    </div>
+
+    <div id="signup-form">
+        <form action="/register" method="POST">
+            <input type="text" name="name" placeholder="Choose username" />
+            <input type="email" name="email" placeholder="Enter your email" />
+            <input type="password" name="password" placeholder="Create password" />
+            <input type="submit" value="Create Account" class="btn signup" />
+            <!-- <button type="button" class="btn signup"><i class="fa fa-spinner fa-pulse"></i> create account
+          </button>  -->
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    function toggleSignup() {
+        document.getElementById("login-toggle").style.backgroundColor = "#182C25";
+        document.getElementById("login-toggle").style.color = "#c7c7c7";
+        document.getElementById("signup-toggle").style.backgroundColor = "#57b846";
+        document.getElementById("signup-toggle").style.color = "#fff";
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("signup-form").style.display = "block";
+    }
+
+    function toggleLogin() {
+        document.getElementById("login-toggle").style.backgroundColor = "#57B846";
+        document.getElementById("login-toggle").style.color = "#fff";
+        document.getElementById("signup-toggle").style.backgroundColor = "#182C25";
+        document.getElementById("signup-toggle").style.color = "#c7c7c7";
+        document.getElementById("signup-form").style.display = "none";
+        document.getElementById("login-form").style.display = "block";
+    }
+</script>

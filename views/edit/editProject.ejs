@@ -1,0 +1,107 @@
+<div class="forms-sidebyside">
+    <div class="form-edit">
+        <h1>EDIT</h1>
+
+        <form id="form" action="/dashboard/projects/<%= project.id %>" method="POST"
+            enctype="application/x-www-form-urlencoded">
+            <br>
+            <br>
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" value="<%= project.title %>">
+            <br>
+            <br>
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description" value="<%= project.description %>">
+            <br>
+            <br>
+            <label for="owner">Owner:</label>
+            <% let iterator = 0; %>
+            <select name="owner" id="owner">
+                <% users.forEach(user => { %>
+                <% if (user.role == 'admin' || user.role == 'pseudo-admin' || user.role == 'project manager') { %>
+                <% if (project.owner == user.id) { %>
+                <option value="<%= user.id %>" selected="selected"><%= user.name %></option>
+                <% iterator++; %>
+                <% }}}) %>
+            </select>
+            <% if (iterator == 0) { %>
+            <span class="error">&emsp;NO OWNERS ASSIGNED</span>
+            <% } %>
+            <br>
+            <br>
+            <label for="assignedTo">Assigned To:</label>
+            <br>
+            <% users.forEach(user => { %>
+            <% if (!(user.role == 'pseudo-admin')) { %>
+            <% if (!(user.id == signedInUser.id)) { %>
+            <% if (user.projects.includes(project.id)) { %>
+            <!-- Pre-Check the Box -->
+            <input type="checkbox" name="assignedTo" id="assignedTo" value="<%= user.id %>" checked> <%= user.name %>
+            <br>
+            <% } else { %>
+            <!-- Don't Check the Box -->
+            <input type="checkbox" name="assignedTo" id="assignedTo" value="<%= user.id %>"> <%= user.name %> <br>
+            <% }}}}) %>
+            <br>
+            <br>
+            <label for="sourcing">Sourcing:</label>
+            <select name="sourcing" id="sourcing">
+                <% if (project.sourcing == 'in-sourced') { %>
+                <option value="in-sourced" selected="selected">In-Sourcing</option>
+                <option value="out-sourced">Out-Sourcing</option>
+                <% } else { %>
+                <option value="in-sourced">In-Sourcing</option>
+                <option value="out-sourced" selected="selected">Out-Sourcing</option>
+                <% } %>
+            </select>
+            <br>
+            <br>
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" id="uncheckedVals" name="uncheckedVals[]" value="">
+            <input type="submit" value="Edit Project">
+        </form>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="form-delete">
+        <h1>DELETE</h1>
+        <br>
+        <form action="/dashboard/projects/<%= project.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete Project">
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let arrayUnchecked = []
+
+    function sendUnchecked() {
+        // console.log('EXECUTED UNCHECKED FUNCTION!!!')
+        let uncheckedVals = document.getElementById('uncheckedVals');
+        // console.log(typeof (uncheckedVals.value));
+        let all = document.getElementsByName('assignedTo');
+        uncheckedVals.value = [];
+        let i = 0;
+        all.forEach(el => {
+            if (el.checked == false) {
+                arrayUnchecked.push(el.value)
+                // uncheckedVals.value[i][el.value];
+                // uncheckedVals.value.push(el.value)
+            }
+            i++;
+        });
+        uncheckedVals.value = arrayUnchecked
+        // uncheckedVals.value.push(el.value) 
+        // uncheckedVals.value[arrayUnchecked[i]] 
+    }
+
+    const form = document.getElementById('form');
+    // On Submit
+    form.addEventListener('submit', sendUnchecked);
+</script>

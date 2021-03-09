@@ -1,0 +1,39 @@
+<%- include('./partials/header.ejs'); %>
+
+<main>
+  <!-- <form action="/new-project" method="POST">
+    <input class="new-project" type="submit" value="<%= item %> +">
+  </form> -->
+
+<a href="/dashboard/new-ticket" class="new-project"><%= item %> +</a>
+
+<!-- RENDER TICKETS -->
+
+<% if (item == 'Ticket') { %>
+    <% if (data.length > 0) { %>
+    <% data.forEach(el => { %>
+  
+  
+      <div class="block container">
+        <a class="overlay" href="#overlay-link" title="overlay"></a>
+        <div class="inner row">
+          <div class="col">
+            <p>Name</p>
+            <p class="value"><%= el.title %> </p>
+          </div>
+          <div class="col">
+            <p>Members</p>
+            <p class="value"><%= el.assignedTo.length %> </p>
+    
+          </div>
+          <div class="col">
+            <p>Edit?</p>
+            <p class="value"><a href="/dashboard/edit-ticket" title="inner" class="inner-link">Edit?</a></p>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+    <% } else { %>
+    <p>This project does not have any <%= item %>s</p>
+    <% } %>
+    <% } %>

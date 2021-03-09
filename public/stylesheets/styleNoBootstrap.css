@@ -1,0 +1,156 @@
+body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.new-project {
+  background-color: wheat;
+  /* color: wheat; */
+  padding: 16px;
+  /* margin: 16px; */
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+#container {
+  /* flex-wrap: wrap; */
+  width: 980px;
+}
+
+.error {
+  color: red;
+}
+
+header {
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px;
+  font-size: 20px;
+}
+
+nav a {
+  padding: 0px 20px;
+  text-decoration: none;
+  color: dodgerblue;
+  /* font-size: 20px; */
+}
+
+main {
+  margin: 0px 40px;
+  width: 100%;
+}
+
+/* .description {
+  display: flex;
+  justify-content: space-around;
+  background-color: gainsboro;
+  border-radius: 25px 25px 0px 0px;
+  padding: 2px 0px;
+}
+
+.data {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  background-color: aliceblue;
+  border-radius: 0px 0px 25px 25px;
+  padding: 40px 0px;
+}
+
+.list-group {
+  position: relative;
+  margin: 40px 0px;
+}
+
+.list-group .project-link-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.list-group .project-link-overlay:hover {
+  background-color: cornflowerblue;
+}
+
+.onelink::after {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: relative;
+} */
+
+.block {
+  /* width: 200px; */
+  height: 100px;
+  margin: 40px 0px;
+  background-color: #dedede;
+  position: relative;
+  /* padding: 20px; */
+  border-radius: 25px;
+}
+
+.block .overlay {
+  /* height: 100%; */
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.block .overlay:hover {
+  background-color: white;
+}
+
+.block .inner {
+  /* height: 100%; */
+  position: relative;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.block .inner a {
+  /* height: 100%; */
+  pointer-events: all;
+  position: relative;
+  background-color: #1b6569;
+  color: whitesmoke;
+  padding: 12px;
+  font-size: 20px;
+  border-radius: 12px;
+}
+
+.data a:hover {
+  background-color: #258c92;
+}
+
+.description {
+  display: flex;
+  justify-content: space-around;
+  background-color: gainsboro;
+  border-radius: 25px 25px 0px 0px;
+  padding: 2px 0px;
+}
+
+.data {
+  height: 80%; /*THIS IS NOT A GOOD WAY OF DOING IT... Super Specific*/
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* align-content: center; */
+  background-color: aliceblue;
+  border-radius: 0px 0px 25px 25px;
+  /* padding: 40px 0px; */
+}

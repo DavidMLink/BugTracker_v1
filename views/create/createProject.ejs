@@ -1,0 +1,33 @@
+<h1>CREATE</h1>
+
+<form action="/dashboard/projects" method="POST">
+    <br>
+    <br>
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title">
+    <br>
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" name="description" id="description">
+    <br>
+    <br>
+    <label for="assignedTo">Assigned To:</label>
+    <br>
+    <% users.forEach(user => { %>
+        <% if (!(user.id == signedInUser.id.id)) { %>
+            <input type="checkbox" name="assignedTo" id="assignedTo" value="<%= user.id %>"> <%= user.name %> <br>
+        <% } %>
+    <% }) %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <label for="sourcing">Sourcing:</label>
+    <select name="sourcing" id="sourcing">
+        <option value="in-sourced" selected="selected">In-Sourcing</option>
+        <option value="out-sourced">Out-Sourcing</option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Create Project">
+</form>

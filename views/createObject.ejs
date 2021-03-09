@@ -1,0 +1,17 @@
+<style>
+    .spacer{
+        height: 40px;
+    }
+</style>
+
+<div class="spacer"></div>
+
+<% if (item == 'Project') { %>
+    <%- include('./create/createProject.ejs'); %>
+<% } %>
+<% if (item == 'Ticket') { %>
+    <%- include('./create/createTicket.ejs'); %>
+<% } %>
+<% if (item == 'User') { %>
+    <%- include('./create/createUser.ejs'); %>
+<% } %>

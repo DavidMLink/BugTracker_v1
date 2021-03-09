@@ -1,0 +1,129 @@
+<div class="forms-sidebyside">
+    <div class="form-edit">
+        <h1>EDIT</h1>
+        <form action="/dashboard/tickets/<%= ticket.id %>" method="POST" enctype="application/x-www-form-urlencoded">
+            <br>
+            <br>
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" value="<%= ticket.title %>">
+            <br>
+            <br>
+            <label for="owner">Owner:</label>
+            <% let iterator = 0; %>
+            <select name="owner" id="owner">
+                <% users.forEach(user => { %>
+                <% if (ticket.owner == user.id) { %>
+                <option value="<%= user.id %>" selected="selected"><%= user.name %></option>
+                <% iterator++; %>
+                <% } else { %>
+                <option value="<%= user.id %>"><%= user.name %></option>
+                <% }}) %>
+            </select>
+            <% if (iterator == 0) { %>
+            <span class="error">&emsp;NO OWNERS ASSIGNED</span>
+            <% } %>
+            <br>
+            <br>
+
+
+
+
+            <label for="project">Project:</label>
+            <% if (!ticket.project) { %>
+            <select name="project" id="project">
+                <% projects.forEach(project => { %>
+                <% if(project.tickets.includes(ticket.id)) { %>
+                <option value="<%= project.id %>" selected="selected"><%= project.title %> </option>
+                <% } else { %>
+                <option value="<%= project.id %>"><%= project.title %> </option>
+                <% }}) %>
+            </select>
+            <% } else { %>
+            <h5><%= ticket.project.title %> </h5>
+            <% } %>
+            <br>
+            <br>
+
+
+
+
+            <label for="status">Status:</label>
+            <select name="status" id="status">
+                <option value="New" <% if (ticket.status == "New") { %> selected="selected" <% } %>>New</option>
+                <option value="Assigned" <% if (ticket.status == "Assigned") { %> selected="selected" <% } %>>Assigned
+                </option>
+                <option value="In Progress" <% if (ticket.status == "In Progress") { %> selected="selected" <% } %>>In
+                    Progress
+                </option>
+                <option value="Resolved" <% if (ticket.status == "Resolved") { %> selected="selected" <% } %>>Resolved
+                </option>
+                <option value="On-Hold" <% if (ticket.status == "On-Hold") { %> selected="selected" <% } %>>On-Hold
+                </option>
+            </select>
+            <br>
+            <br>
+            <label for="priority">Priority:</label>
+            <select name="priority" id="priority">
+                <option value="None" <% if (ticket.priority == "None") { %> selected="selected" <% } %>>None</option>
+                <option value="Low" <% if (ticket.priority == "Low") { %> selected="selected" <% } %>>Low</option>
+                <option value="Medium" <% if (ticket.priority == "Medium") { %> selected="selected" <% } %>>Medium
+                </option>
+                <option value="High" <% if (ticket.priority == "High") { %> selected="selected" <% } %>>High</option>
+            </select>
+            <br>
+            <br>
+            <label for="type">Type:</label>
+            <select name="type" id="type">
+                <option value="Bug" <% if (ticket.type == "Bug") { %> selected="selected" <% } %>>Bug</option>
+                <option value="Feature Request" <% if (ticket.type == "Feature Request") { %> selected="selected"
+                    <% } %>>
+                    Feature Request</option>
+            </select>
+            <br>
+            <br>
+            <label for="assignedTo">Assigned To:</label>
+            <br>
+            <% users.forEach(user => { %>
+                <% if ((user.projects.includes(ticket.project.id))) { %>
+                    <% if (ticket.assignedTo.includes(user.id)) { %>
+                    <!-- Pre-Check the Box -->
+                    <input type="checkbox" name="assignedTo" id="assignedTo" value="<%= user.id %>" checked> <%= user.name %>
+                    <br>
+                    <% } else { %>
+                    <!-- Don't Check the Box -->
+                    <input type="checkbox" name="assignedTo" id="assignedTo" value="<%= user.id %>"> <%= user.name %> <br>
+                    <% }}}) %>
+            <br>
+            <br>
+            <label for="sourcing">Sourcing:</label>
+            <select name="sourcing" id="sourcing">
+                <% if (ticket.sourcing == 'in-sourced') { %>
+                <option value="in-sourced" selected="selected">In-Sourcing</option>
+                <option value="out-sourced">Out-Sourcing</option>
+                <% } else { %>
+                <option value="in-sourced">In-Sourcing</option>
+                <option value="out-sourced" selected="selected">Out-Sourcing</option>
+                <% } %>
+            </select>
+            <br>
+            <br>
+            <input type="hidden" name="_method" value="PUT">
+            <input type="submit" value="Edit Ticket">
+        </form>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="form-delete">
+        <h1>DELETE</h1>
+        <br>
+        <form action="/dashboard/tickets/<%= ticket.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete Ticket">
+        </form>
+    </div>
+</div>

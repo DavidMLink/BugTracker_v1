@@ -1,0 +1,22 @@
+<header>
+    <nav>
+      <!-- <h3 class="brand">Brand</h3> -->
+      <a href="/"><img src="/images/svgs/bugIcon.svg" width="72px" alt="Magnifier magnifing Bug"></a>
+      <div class="links">
+        <% if (managerPermission || adminPermission) { %>
+          <a href="/dashboard/projects">Projects</a>
+        <% } %>
+        <a href="/dashboard/tickets">Tickets</a>
+        <% if (adminPermission) { %>
+          <a href="/dashboard/users">Users</a>
+        <% } %>
+        <div class="dropdown">
+          <a href="/dashboard/profile">Profile</a>
+          <div class="dropdown-content">
+            <a href="/dashboard/profile">My Profile</a>
+            <a href="/dashboard/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>

@@ -1,0 +1,22 @@
+<style>
+    .spacer{
+        height: 40px;
+    }
+</style>
+
+<div class="spacer">
+
+</div>
+
+<% if (item == 'Project') { %>
+    <%- include('./edit/editProject.ejs'); %>
+<% } %>
+<% if (item == 'Ticket') { %>
+    <%- include('./edit/editTicket.ejs'); %>
+<% } %>
+<% if (item == 'User') { %>
+    <%- include('./edit/editUser.ejs'); %>
+<% } %>
+<% if (item == 'Profile') { %>
+    <%- include('./edit/profile.ejs'); %>
+<% } %>

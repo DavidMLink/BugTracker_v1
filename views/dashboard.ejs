@@ -1,0 +1,349 @@
+<style>
+  /* *{
+      margin: 0px;
+      padding: 0px;
+  } */
+
+  .list-card {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 12px 12px 25px 25px;
+    background-color: #3c6c5b;
+    width: 100%;
+    height: 100%;
+    min-height: 140px;
+    /* justify-content: stretch; */
+  }
+
+  .column-card {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* justify-content: stretch; */
+    /* align-content: stretch; */
+    min-height: 140px;
+    /* align-content: center; */
+    /* align-items: center; */
+    /* flex-wrap: wrap; */
+    /* border-radius: 12px; */
+  }
+
+  .value {
+    /* padding-bottom: 10px; */
+    /* text-align: center; */
+    align-self: center;
+    height: auto;
+    /* height: 100%; */
+    /* height: 100px; */
+    /* align-items: center;
+      align-content: center;
+      justify-self: center;
+      justify-content: center;
+      justify-items: center; */
+  }
+
+  .column-card p {
+    width: 100%;
+    /* display: block; */
+  }
+
+  .title-description {
+    text-align: center;
+    background-color: #559d84;
+  }
+
+  .value-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    /* align-items: center; */
+    height: 100%;
+    width: 100%;
+    height: 100px;
+    /* padding-bottom: 10px; */
+  }
+
+  .spacer {
+    display: block;
+    width: auto;
+    height: 72px;
+  }
+
+  .generate-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 140px;
+  }
+  .generate-data{
+    text-decoration: none;
+    color: white;
+    background-color: aquamarine;
+    border-radius: 12px;
+    padding: 40px;
+    font-size: 40px;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.5);
+    background-color: #306844;
+    color: #F3FAF0;
+  }
+  @keyframes glowing {
+        0% {
+          /* background-color: #306844; */
+          box-shadow: 0 0 5px #2ba805;
+        }
+        50% {
+          /* background-color: #49e819; */
+          box-shadow: 0px 0px 40px #49e819;
+        }
+        100% {
+          /* background-color: #306844; */
+          box-shadow: 0 0 5px #2ba805;
+        }
+      }
+      .generate-data {
+        animation: glowing 4000ms infinite;
+      }
+  .generate-data:hover{
+    color: white;
+    background-color: #499e67;
+  }
+
+  .delete-button{
+    float: right;
+    display: block;
+    margin-top: 20px;
+    /* text-decoration: none; */
+    /* color: #F3FAF0; */
+    /* background-color: #cc0000; */
+    /* padding: 20px; */
+    /* border-radius: 12px; */
+  }
+  .delete-button a{
+    background-color: #660000;
+  }
+  .delete-button a:hover{
+    background-color: #a60000;
+  }
+  .quick-fix{
+    margin-top: 12px;
+  }
+
+</style>
+
+
+<% if ((item == 'Project') && (signedInUser.role == 'pseudo-admin')) { %>
+  <div class="delete-button main-button">
+    <a href="/dashboard/deleteData">Delete All Data</a>
+  </div>
+<% } %>
+
+<div class="spacer">
+  <p></p>
+</div>
+
+<% if (item=='User') { %>
+ <div class="quick-fix"></div>
+<% } %>
+
+
+<main>
+  <div class="main-title-section">
+    <% if (item == 'Project') { %>
+      <div class="main-title">
+        <h1>All <%= item %>s</h1>
+      </div>
+      <div class="main-button">
+        <a href="/dashboard/new-project">New <%= item %> +</a>
+      </div>
+    <% } %>
+    <% if (item == 'Ticket') { %>
+      <div class="main-title">
+      <% if (oneItem) { %>
+      <h1><%= oneItem.title %> <%= item %>s</h1>
+      <% } else { %>
+      <h1>All <%= item %>s</h1>
+      <% } %>
+    </div>
+    <% if (oneItem) { %>
+      <div class="main-button">
+        <a href="/dashboard/new-ticket/<%= oneItem.id %> ">New <%= item %> +</a>
+      </div>
+      <% } else { %>
+        <div class="main-button">
+          <a href="/dashboard/new-ticket">New <%= item %> +</a>
+        </div>
+    <% } %>
+    <% } %>
+    <% if (item == 'User') { %>
+    <div class="main-button">
+      <a href="/dashboard/new-user">New <%= item %> +</a>
+    </div>
+    <% } %>
+  </div>
+
+  <% if (denied) { %>
+  <p><%= denied %> </p>
+  <% } %>
+
+  <!-- RENDER PROJECTS -->
+
+  <% if (item == 'Project') { %>
+  <% if (data.length > 0) { %>
+  <% data.forEach(el => { %>
+
+  <div class="block">
+    <a class="overlay" href="/dashboard/projects/<%= el.id %> " title="overlay"></a>
+    <div class="inner list-card">
+      <div class="column-card">
+        <p class="title-description firstTitle">Name</p>
+        <div class="value-wrapper">
+          <p class="value"><%= el.title %></p>
+        </div>
+      </div>
+      <div class="column-card">
+        <p class="title-description">Issues</p>
+        <div class="value-wrapper">
+          <p class="value"><%= el.tickets.length %></p>
+        </div>
+      </div>
+      <div class="column-card">
+        <p class="title-description">Members</p>
+        <div class="value-wrapper">
+          <% if (el.assignedTo) { %>
+            <% if (el.assignedTo.includes(signedInUser.id)) { %>
+              <p class="value"><%= el.assignedTo.length %></p>
+              <% } else { %>
+                <p class="value"><%= el.assignedTo.length %></p>
+            <% } %>
+          <% } else { %>
+          <p class="value">0</p>
+          <% } %>
+        </div>
+      </div>
+      <div class="column-card">
+        <p class="title-description lastTitle">Edit?</p>
+        <div class="value-wrapper">
+          <p class="value"><a href="/dashboard/edit-project/<%= el.id %>" title="inner" class="inner-link">Edit?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+  <% } else { %>
+  <br>
+  <br>
+  <% if (signedInUser.role == 'pseudo-admin') { %>
+    <div class="generate-wrapper">
+      <a class="generate-data" href="/dashboard/generateData">Generate All Data</a>
+    </div>
+  <% } %>
+  <!-- <p>You have not been assigned to any <%= item %>s</p> -->
+  <% } %>
+  <% } %>
+
+  <!-- RENDER TICKETS -->
+
+  <% if (item == 'Ticket') { %>
+  <% if (data.length > 0) { %>
+  <% data.forEach(el => { %>
+  <div class="block">
+    <a class="overlay" href="/dashboard/tickets/<%= el.id %>" title="overlay"></a>
+    <div class="inner list-card">
+      <div class="column-card">
+        <p class="title-description firstTitle">Name</p>
+        <div class="value-wrapper">
+          <p class="value"><%= el.title %></p>
+        </div>
+      </div>
+      <div class="column-card">
+        <p class="title-description">Members</p>
+        <div class="value-wrapper">
+          <p class="value"><%= el.assignedTo.length %></p>
+        </div>
+      </div>
+      <div class="column-card">
+        <p class="title-description lastTitle">Edit?</p>
+        <div class="value-wrapper">
+          <% if ((el.assignedTo.includes(signedInUser.id)) || (el.owner == signedInUser.id)) { %>
+            <p class="value"><a href="/dashboard/edit-ticket/<%= el.id %>" title="inner" class="inner-link">Edit?</a></p>
+            <% } else { %>
+              <p>No Editing Rights</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+  <% } else { %>
+  <br>
+  <br>
+  <p>You have not been assigned to any <%= item %>s</p>
+  <% } %>
+  <% } %>
+
+  <!-- RENDER USERS -->
+
+
+  <% if (item == 'User') { %>
+  <% if (data.length > 0) { %>
+  <% data.forEach(el => { %>
+
+  <div class="block">
+    <a class="overlay" href="/dashboard/users/<%= el.id %>" title="overlay"></a>
+    <div class="inner list-card">
+      <div class="column-card">
+        <p class="title-description firstTitle">Name</p>
+        <div class="value-wrapper">
+          <p class="value"><%= el.name %></p>
+        </div>
+      </div>
+      <div class="column-card">
+        <p class="title-description">Role</p>
+        <div class="value-wrapper">
+          <% if (el.role == 'pseudo-admin') { %>
+            <p class="value">Admin</p>
+            <% } else { %>
+              <p class="value"><%= el.role %></p>
+          <% } %>
+        </div>
+      </div>
+      <div class="column-card">
+        <p class="title-description">Email</p>
+        <div class="value-wrapper">
+          <p class="value"><%= el.email %></p>
+        </div>
+      </div>
+      <div class="column-card">
+        <p class="title-description">Projects</p>
+        <div class="value-wrapper">
+          <% el.projects.forEach(element => { %>
+          <p class="value"><%= element.title %> </p>
+          <% }) %>
+        </div>
+      </div>
+      <div class="column-card">
+        <p class="title-description lastTitle">Edit?</p>
+        <div class="value-wrapper">
+          <p class="value"><a href="/dashboard/edit-user/<%= el.id %>" title="inner" class="inner-link">Edit?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+  <% } else { %>
+  <br>
+  <br>
+  <p>You have not been assigned to any <%= item %>s</p>
+  <% } %>
+  <% } %>
+
+
+
+
+
+
+
+
+</main>
