@@ -4,7 +4,7 @@
 ### Technologies:
 ![technologies]()
 
-### Features 🚀
+### Features ✔️
 - Login & Registration
 - Cascading Permissions
 - Manually Cascaded Editing
