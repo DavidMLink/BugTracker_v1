@@ -2,7 +2,7 @@
 # BugTracker_v1
 ## Tracks Bugs and Feature Requests for You or Your Organization
 ### Technologies:
-![technologies]()
+![technologies](dashboard.png)
 
 ### Features ✔️
 - Login & Registration
