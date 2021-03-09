@@ -3,4 +3,11 @@
 ## Tracks Bugs and Feature Requests for You or Your Organization
 ### Technologies:
 ![technologies]()
-### What is this and what does it do 🤷‍♀️
+
+### Features
+- Login & Registration
+- Cascading Permissions
+- Manually Cascaded Edit
+- Manually Cascaded Deletion
+- Basic Error Handling
+- Database Seeder
