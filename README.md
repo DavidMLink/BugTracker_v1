@@ -1,2 +1,2 @@
-# BugTracker_v1
-## Helps Track Bugs and Feature Requests for personal use or your organization
+<h1 align="center">BugTracker_v1</h1>
+## Tracks Bugs and Feature Requests for You or Your Organization
