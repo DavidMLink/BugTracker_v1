@@ -1,9 +1,7 @@
-
 # BugTracker_v1
 ## Tracks Bugs and Feature Requests for You or Your Organization
 ### Technologies:
 ![technologies](homeSmall.PNG)
-![technologies](dashboard.PNG)
 
 ### Features ✔️
 - Login & Registration
