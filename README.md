@@ -2,7 +2,8 @@
 ## Tracks Bugs and Feature Requests for You or Your Organization
 ## [Live Demo](https://bugtracker-davidlink.herokuapp.com/)
 ### Technologies:
-![technologies](homeSmall.PNG)
+![technologies](technologies.PNG)
+![App](homeSmall.PNG)
 
 ### Features ✔️
 - Login & Registration
