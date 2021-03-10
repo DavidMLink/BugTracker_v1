@@ -1,3 +1,9 @@
+@import './reset.css';
+@import './form.css';
+@import './home.css';
+
+
+
 body {
   display: flex;
   flex-wrap: wrap;

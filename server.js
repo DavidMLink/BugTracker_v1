@@ -50,11 +50,18 @@ app.use(methodOverride(function (req, res) {
   }
 }))
 
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'))
-}
+
 
 const __dirname = path.resolve()
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+  app.use(express.static(path.join(__dirname, 'public')));
+}
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'public')));
+}
+
 // view engine setup
 app.use(expressLayouts)
 app.set('layout', './layouts/layout')
@@ -64,7 +71,6 @@ app.set('view engine', 'ejs');
 app.use(cookieParser());
 
 //Set Static Folder
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Set Session Options
 app.use(session({
