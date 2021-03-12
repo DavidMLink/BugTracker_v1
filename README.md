@@ -15,6 +15,7 @@
 
 ### Technologies:
 ![technologies](./public/images/technologies.PNG)
+### App:
 ![App](./public/images/homeSmall.PNG)
 
 ### Features ✔️
