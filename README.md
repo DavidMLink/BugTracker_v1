@@ -1,8 +1,9 @@
 # BugTracker_v1
 ## Tracks Bugs and Feature Requests for You or Your Organization
 ## [Live Demo](https://bugtracker-davidlink.herokuapp.com/)
-### What's it do? 🤷‍♀️
-#### Allows you to create Tickets for your Projects. There are 3 different permission levels, Admin, Project Manager or Developer:
+## What's it do? 🤷‍♀️
+### Create Projects and its Tickets to track bugs/feature requests. 
+### 3 Permission Levels: Admin | Project Manager | Developer:
 #### Admins can CRUD:
 - Users
 - Projects
