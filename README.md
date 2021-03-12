@@ -2,8 +2,8 @@
 ## Tracks Bugs and Feature Requests for You or Your Organization
 ## [Live Demo](https://bugtracker-davidlink.herokuapp.com/)
 ## What's It Do? 🤷‍♀️
-### A.&nbsp;&nbsp;&nbsp;&nbsp;Create Projects and Associated Tickets to Track Bugs / Feature Requests. 
-### B.&nbsp;&nbsp;&nbsp;&nbsp;3 Permission Levels: Admin | Project Manager | Developer:
+### &nbsp;&nbsp;A.&nbsp;&nbsp;&nbsp;Create Projects and Associated Tickets to Track Bugs / Feature Requests. 
+### &nbsp;&nbsp;B.&nbsp;&nbsp;&nbsp;3 Permission Levels: Admin | Project Manager | Developer:
 
 ### Technologies:
 ![technologies](./public/images/technologies.PNG)
